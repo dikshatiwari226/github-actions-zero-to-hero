@@ -12,7 +12,7 @@ jobs:
       - name: Code Checkout
         run: actions/checkout@v4
 
-      - name: zlogin to Docker Hub
+      - name: login to Docker Hub
         run: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USER }}
