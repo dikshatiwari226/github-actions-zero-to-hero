@@ -6,6 +6,7 @@ on:
   workflow_Dispatch:
 
 jobs:
+  # every job needs seperate runner, its called parallelism
   code:
     runs-on: ubuntu-latest
     steps: 
