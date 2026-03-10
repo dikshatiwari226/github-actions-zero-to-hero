@@ -8,6 +8,7 @@ on:
 permissions:
   pages: write
   id-token: write
+  contents: read
 
 jobs:
   deploy:
@@ -15,7 +16,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{steps.deployment.outputs.page_url}}
 
     steps:
       # Get acces to your Portfolio code via pre-built actions
@@ -31,7 +32,7 @@ jobs:
       - name: Upload static files
         uses: actions/upload-pages-artifact@v4
         with:
-          path: $GITHUB_WORKSPACE/build
+          path: "."
 
       # Make page live
       - name: Deploy to GitHub pages
