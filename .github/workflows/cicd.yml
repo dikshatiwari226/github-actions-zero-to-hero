@@ -4,9 +4,9 @@ name: CICD
 # Manual click(deliever) workflow whenever  user needs
 on:
   workflow_Dispatch:
-   inputs:
+    inputs:
     enviornments:
-      description: This is the env where this workflow run
+      description: This is the environment value where this workflow runs
       default: 'dev'
       required: true
       type: choice
@@ -36,7 +36,8 @@ jobs:
         run: echo "Testing the container"
        
   deploy:
-    needs: [test]
+    if: ${{ inputs.environment == 'dev' }}
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy the app
