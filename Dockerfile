@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 80
 
-CMD ["paython","app.py"]
+CMD ["python","app.py"]
