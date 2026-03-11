@@ -24,7 +24,6 @@ jobs:
           context: .
           push: true
           tags: |
-            tags: |
             dikshatiwari226/github-actions-app:latest
             dikshatiwari226/github-actions-app:${{ github.ref_name }}
             dikshatiwari226/github-actions-app:${{ github.sha }}
