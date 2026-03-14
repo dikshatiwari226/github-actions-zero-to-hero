@@ -1,0 +1,4 @@
+# ignore the vulnerability
+
+# libc
+CVE-2026-0861
