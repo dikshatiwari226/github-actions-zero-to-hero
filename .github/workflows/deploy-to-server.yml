@@ -15,6 +15,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: set docker tag environment variable
+        run: echo "DOCKER_TAG = ${{ github.event.workflow_run.head_sha }}" >> $GITHUB_ENV
+
       - name: SSH to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
