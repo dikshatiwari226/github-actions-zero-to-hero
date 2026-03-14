@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: set docker tag environment variable
-        run: echo "DOCKER_TAG = ${{ github.event.workflow_run.head_sha }}" >> $GITHUB_ENV
+        run: echo "DOCKER_TAG=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_ENV
 
       - name: SSH to Server
         uses: appleboy/ssh-action@v1.0.3
@@ -50,8 +50,7 @@ jobs:
             newgrp docker
             echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ vars.DOCKERHUB_USERNAME }} --password-stdin
             export DOCKERHUB_USERNAME=${{ vars.DOCKERHUB_USERNAME }}
-            DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
-            export DOCKER_TAG: ${{ github.sha }}
+            export DOCKER_TAG=${{ github.sha }}
             echo $DOCKER_TAG
             sudo chmod 666 /var/run/docker.sock
             cd devops && docker compose down -v &&docker compose up -d --build --force-recreate --pull always
